@@ -1,76 +1,92 @@
 # Ex06-Redirecting-the-Scene
-## Name: Aishwarya S
-## Reg No:212222100003
-## Aim:
+## Aim :
 To Redirecting the scene in the unity engine.
 
-## Algorithm:
-Step 1:
-To open the unity engine.
+## Algorithm :
+### Step 1:
+ To open the unity engine.
 
-Step 2:
+### Step 2: 
 Create a new 3D project.
 
-Step 3:
-Create plane and name it as ground and create cube and name it as player.
+### Step 3:
+ Create plane and name it as ground and create cube and name it as player.
 
-Step 4:
-Add WinText in Hierarchy.
+### Step 4:
+ Add WinText in Hierarchy.
 
-Step 5:
-Create a C# Script and name it as playercontroller and add the script to player.
+### Step 5:
+ Create a C# Script and name it as playercontroller and add the script to player.
 
-Step 6:
+### Step 6:
+Inside the "CubePlayer" script, import necessary Unity libraries. (i.e.,using UnityEngine; and using UnityEngine.SceneManagement;) 
+
+### Step 7:
 Use the R button to change the level2
 
-Step 7
+### Step 8:
+Use 'SceneManager.LoadScene() method in the script to handle scene redirection.
+
+### Step 9:
+Attach the "SceneRedirector" script to an empty GameObject in your scene.
+
+### Step 10:
+Press the specified key (in this case, "R") to test redirection to the "Level2" scene.
+
+### Step 11:
 Print the Output and end the program.
 
-## Program:
 
-```c#
+## Program :
+
+```C#
+DEVELOPED BY: Aishwarya S
+REGISTER NUMBER : 212222100003
+```
+
+## CUBE PLAYER :
+
+```C#
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-
-public class cube : MonoBehaviour
+public class CubePlayer : MonoBehaviour
 {
     Rigidbody rb;
     public GameObject WinText;
     // Start is called before the first frame update
     void Start()
     {
-        rb=GetComponent<Rigidbody>();
+        rb = GetComponent<Rigidbody>();
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.R))
+        if(Input.GetKeyDown(KeyCode.R))
         {
-            SceneManager.LoadScene("Level 2");
+            SceneManager.LoadScene("Level2");
         }
+        
     }
-    private void OnCollisionEnter(Collision Other)
+    private void OnCollisionEnter(Collision other)
     {
-        if (Other.gameObject.tag=="Destroy")
+        if(other.gameObject.tag=="sphere")
         {
-            Destroy(Other.gameObject);
+            Destroy(other.gameObject);
             WinText.SetActive(true);
         }
     }
 }
+
 ```
+## Output :
+![](./view.png)
+![](./game.png)
 
-## Output:
-![alt text](<Screenshot (38).png>)
 
-![alt text](<Screenshot (39).png>)
-
-![alt text](<Screenshot (40).png>)
-
-## Result:
-
+## Result :
 The above C# coding is successfully redirecting the scene in the unity engine.
